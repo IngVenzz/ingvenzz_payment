@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .payment-container {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .payment-header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .payment-header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .payment-body {
+            padding: 25px;
+        }
+        
+        .payment-method {
+            margin-bottom: 25px;
+        }
+        
+        .method-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .method-title img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .method-title h3 {
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .payment-details {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-details:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .detail-value {
+            color: #222;
+            font-family: monospace;
+        }
+        
+        .qris-container {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .qris-image {
+            max-width: 200px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+        
+        .qris-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .copy-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 10px;
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .instructions {
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 480px) {
+            .payment-container {
+                border-radius: 10px;
+            }
+            
+            .payment-header {
+                padding: 15px;
+            }
+            
+            .payment-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="payment-header">
+            <h1>Payment Gateway</h1>
+            <p>Choose your preferred payment method</p>
+        </div>
+        
+        <div class="payment-body">
+            <div class="payment-method">
+                <div class="method-title">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA">
+                    <h3>DANA Payment</h3>
+                </div>
+                <div class="payment-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Phone Number:</span>
+                        <span class="detail-value">085770561156 <button class="copy-btn" onclick="copyToClipboard('085770561156')">Copy</button></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-method">
+                <div class="method-title">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_QRIS.png" alt="QRIS">
+                    <h3>QRIS Payment</h3>
+                </div>
+                <div class="payment-details">
+                    <div class="qris-container">
+                        <img src="https://telegra.ph/file/b61c90b23cc06a118643f-3c8421c767cfa18805.jpg" alt="QR Code" class="qris-image">
+                        <p style="margin-top: 10px;">Scan this QR code with your banking app</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-method">
+                <div class="method-title">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.png" alt="GoPay">
+                    <h3>GoPay Payment</h3>
+                </div>
+                <div class="payment-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Phone Number:</span>
+                        <span class="detail-value">085770561156 <button class="copy-btn" onclick="copyToClipboard('085770561156')">Copy</button></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-method">
+                <div class="method-title">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg" alt="OVO">
+                    <h3>OVO Payment</h3>
+                </div>
+                <div class="payment-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Phone Number:</span>
+                        <span class="detail-value">085770561156 <button class="copy-btn" onclick="copyToClipboard('085770561156')">Copy</button></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <p><strong>Payment Instructions:</strong></p>
+                <ol style="margin-top: 8px; padding-left: 20px;">
+                    <li>Select your preferred payment method above</li>
+                    <li>Copy the payment details or scan the QR code</li>
+                    <li>Complete the payment through your chosen app</li>
+                    <li>Keep the payment receipt as proof</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Copied to clipboard: ' + text);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
